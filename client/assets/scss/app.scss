@@ -1,0 +1,40 @@
+@import "settings";
+@import "foundation";
+@import "pavicons";
+
+// Shadows
+// - - - - - - - - - - - - - - -
+
+$shadow : 0 0 10px rgba(0,0,0,0.15);
+$shadow-floaty : 0 0 20px rgba(0,0,0,0.15);
+$shadow-floatier : 0 0 30px rgba(0,0,0,0.15);
+
+
+
+
+// Menu Bar
+// - - - - - - - - - - - - - - -
+
+.menu-bar {
+	box-shadow: $shadow;
+	& > li.active {
+		background: smartscale($primary-color, 4%);
+	}
+}
+
+.map-controls {
+    @extend %button-group-segmented;
+    @extend %button-group;
+    margin-top: $global-padding;
+}
+
+
+.title-bar .title {
+  color: transparent;
+  font-size: 2rem;
+  letter-spacing: -0.4rem;
+  background-image: url('../img/logo_header.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
