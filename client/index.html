@@ -3,12 +3,17 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Foundation for Apps</title>
+    <title>P&Amacr;VMENT</title>
+    <link href='https://fonts.googleapis.com/css?family=Signika:300,700' rel='stylesheet' type='text/css'>
     <link href="./assets/css/app.css" rel="stylesheet" type="text/css">
     <script src="./assets/js/foundation.js"></script>
     <script src="./assets/js/templates.js"></script>
     <script src="./assets/js/routes.js"></script>
     <script src="./assets/js/app.js"></script>
+    <script src="https://www.google.com/jsapi"></script>
+    <!--<script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3Z_tA7YdsRXkHdThiC-VA0dvwX6a4Kto&callback=initMap&libraries=geometry">
+    </script> -->
   </head>
   <body zf-esc-close>
 
@@ -29,13 +34,14 @@
       </div>
       <!-- END PAGE VORTEX -->
 
+
       <div class="grid-block shrink">
         <div class="small-12 content">
 
 
             <ul class="primary menu-bar text-center">
               <li ui-sref-active="active"><a ui-sref="home"><span class="pvcn-area-graph"></span><br/>Hill Map</a></li>
-              <li><a href="#"><span class="pvcn-magnifying-glass"></span><br/>Discover</a></li>
+              <li ui-sref-active="active"><a ui-sref="discover" zf-open="search-modal"><span class="pvcn-magnifying-glass"></span><br/>Discover</a></li>
               <li><a href="#"><span class="pvcn-bookmarks"></span><br/>Saved Hills</a></li>
               <li><a ui-sref=""><span class="pvcn-dots-three-vertical"></span><br/>Profile</a></li>
             </ul>
@@ -43,5 +49,6 @@
       </div>
 
     </div>
+
   </body>
 </html>

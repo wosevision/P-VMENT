@@ -1,0 +1,95 @@
+---
+name: discover
+url: /discover
+controller: hillFinder
+---
+
+<div class="grid-content discover-bg">
+
+</div>
+
+
+
+    <div zf-modal="" id="search-modal" class="tiny dialog search-modal" animation-in="slideInRight" animation-out="slideOutLeft">
+      <a zf-open="ride-wizard" zf-close="" class="search-type-button v-align">
+        <h2>Ride wizard</h2>
+        <span class="pvcn-chevron-right align-center"></span>
+      </a>
+      <hr/>
+      <a zf-open="hill-finder" zf-close="" class="search-type-button v-align">
+        <h2>Hill finder</h2>
+        <span class="pvcn-chevron-right align-center"></span>
+      </a>
+    </div>
+
+    <div zf-modal="" id="hill-finder" class="tiny dialog search-modal" animation-in="slideInLeft" animation-out="slideOutRight">
+      <a zf-open="search-modal" zf-close="" class="back-button"><span class="pvcn-chevron-left"></span>Back</a>
+      <h3>Hill finder</h3>
+      <label>
+        By location
+        <span class="inline-label">
+        <input type="search" placeholder="Random">
+        <select name="" id="">
+          <option value="">&#60; 1km</option>
+          <option value="">1-2km</option>
+          <option value="">3-5km</option>
+          <option value="">6-10km</option>
+          <option value="">&#62; 10km</option>
+        </select>
+        </span>
+      </label>
+
+      <label>Intensity <span id="intensity-label" class="float-right {{intensities[intensity][1]}}" ng-bind="intensities[intensity][0]">Cruise</span>
+        <input type="range" value="5" step="1" max="10" ng-model="intensity">
+      </label>
+      <div class="grid-block small-up-3">
+        <div class="grid-content text-left">
+          <span class="pvcn-shopping-cart"></span>
+        </div>
+        <div class="grid-content text-center">
+          <span class="pvcn-aircraft"></span>
+        </div>
+        <div class="grid-content text-right">
+          <span class="pvcn-rocket"></span>
+        </div>
+      </div>
+      
+      <label>Style</label>
+      <div class="grid-block small-up-4 noscroll" ng-controller="intensity-slider">
+        <div class="grid-content text-center">
+          <label for="flat-ride">Free style</label>
+          <div class="small switch">
+            <input type="checkbox" id="flat-ride" name="ride-style">
+            <label for="flat-ride"></label>
+          </div>
+        </div>
+        <div class="grid-content text-center">
+          <label for="short-burst">Short burst</label>
+          <div class="small switch">
+            <input type="checkbox" id="short-burst" name="ride-style">
+            <label for="short-burst"></label>
+          </div>
+        </div>
+        <div class="grid-content text-center">
+          <label for="long-cruise">Long cruise</label>
+          <div class="small switch">
+            <input type="checkbox" id="long-cruise" name="ride-style">
+            <label for="long-cruise"></label>
+          </div>
+        </div>
+        <div class="grid-content text-center">
+          <label for="hill-bomb">Hill bomb</label>
+          <div class="small switch">
+            <input type="checkbox" id="hill-bomb" name="ride-style">
+            <label for="hill-bomb"></label>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div zf-modal="" id="ride-wizard" class="dialog search-modal" animation-in="slideInLeft" animation-out="slideOutRight">
+      <a zf-open="search-modal" zf-close="" class="back-button"><span class="pvcn-chevron-left"></span>Back</a>
+      <h3>Ride wizard</h3>
+    </div>

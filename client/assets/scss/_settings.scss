@@ -92,22 +92,22 @@
 // We use these to control various global styles
 // $body-background: #fff;
 // $body-font-color: #222;
-// $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$body-font-family: "Signika", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 // $body-font-weight: $font-weight-normal;
 // $body-font-style: normal;
 // $body-antialiased: true;
 
 // Application Colors
 $primary-color: #F00B42;
-// $secondary-color: #f1f1f1;
-// $alert-color: #F04124;
-// $info-color: #A0D3E8;
-// $success-color: #43AC6A;
-// $warning-color: #F08A24;
-// $dark-color: #232323;
-// $gray: #dfdfdf;
-// $gray-dark: darken($gray, 8);
-// $gray-light: lighten($gray, 8);
+$secondary-color: #f1f1f1;
+$alert-color: #F04124;
+$info-color: #A0D3E8;
+$success-color: #43AC6A;
+$warning-color: #F08A24;
+$dark-color: #232323;
+$gray: #dfdfdf;
+$gray-dark: darken($gray, 8);
+$gray-light: lighten($gray, 8);
 
 // We use these to make sure border radius matches unless we want it different.
 // $global-radius: 4px;
@@ -425,7 +425,7 @@ $primary-color: #F00B42;
 // 16. Menu Bar
 // - - - - - - - - - - - - - - -
 
-$menubar-fontsize: 0.85rem;
+$menubar-fontsize: rem-calc(12);
 // $menubar-background: #fff;
 // $menubar-background-hover: smartscale($menubar-background, 7%);
 // $menubar-background-active: $menubar-background-hover;
@@ -440,7 +440,7 @@ $menubar-fontsize: 0.85rem;
 // 17. Modal
 // - - - - - - - - - - - - - - -
 
-// $modal-background: #fff;
+$modal-background: rgba(255,255,255,0.1);
 // $modal-border: 0;
 // $modal-radius: 0px;
 // $modal-shadow: none;
@@ -453,7 +453,7 @@ $menubar-fontsize: 0.85rem;
 // );
 
 // $modal-overlay-class: 'modal-overlay';
-// $modal-overlay-background: rgba(#333, 0.7); 
+$modal-overlay-background: transparent; 
 
 // 18. Motion UI
 // - - - - - - - - - - - - - - -
