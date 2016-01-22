@@ -1,6 +1,14 @@
 @import "settings";
 @import "foundation";
 @import "pavicons";
+@import "flickity";
+
+body {
+	background-image: url('../img/sample_bg.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
 
 .color-darkgrey { color: $gray-dark; }
 .color-grey { color: $gray; }
@@ -56,28 +64,28 @@ $shadow-floatier : 0 0 30px rgba(0,0,0,0.15);
 	}
 }
 
+.discover-bg {
+	background: rgba(0,0,0,0.8);
+}
+.map-bg {
+	background: rgba(255,255,255,0.9);
+}
+.settings-bg {
+	background: rgba(255,255,255,0.95);
+}
+
+
 // Search Overlay
 // - - - - - - - - - - - - - - -
 
-.discover-bg {
-	background: #333;
-	&:before {
-	  content: "";
-	  opacity: 0.2;
-	  top: 0;
-	  left: 0;
-	  bottom: 0;
-	  right: 0;
-	  position: absolute;
-	  z-index: 1;   
-		background-image: url('../img/sample_bg.jpg');
-	  background-repeat: no-repeat;
-	  background-position: center;
-	  background-size: cover;
-	}
-}
-
 .search-modal {
+	@extend %modal;
+	@include modal-style();
+	@include modal-layout(
+		$width: 300px
+	);
+	margin: 0 auto;
+	height: auto;
 	color: #ffffff;
 	& label {
 		color: #ffffff;
@@ -95,6 +103,66 @@ $shadow-floatier : 0 0 30px rgba(0,0,0,0.15);
 	}
 }
 
+.ride-select {
+	height: 230px;
+	width: 100%;
+	& .slide {
+		opacity: 0.3;
+		width: 150px;
+		min-height: 150px;
+		&.is-selected {
+			opacity: 1;
+		}
+		& img {
+			width: 150px;
+			height: 150px;
+		}
+		& figcaption {
+			margin-top: 0.85rem;
+			text-transform: uppercase;
+			font-weight: bold;
+			text-align: center;
+		}
+	}
+}
+
+.flickity-prev-next-button {
+  width: 75px;
+  height: 75px;
+  background: transparent;
+}
+.flickity-prev-next-button:hover {
+  background: transparent;
+}
+/* arrow color */
+.flickity-prev-next-button .arrow {
+  fill: white;
+}
+.flickity-prev-next-button.no-svg {
+  color: white;
+}
+/* hide disabled button */
+.flickity-prev-next-button:disabled {
+  display: none;
+}
+/* position dots up a bit */
+.flickity-page-dots {
+	display: none;
+  bottom: -22px;
+}
+/* dots are lines */
+.flickity-page-dots .dot {
+  height: 4px;
+  width: 40px;
+  margin: 0;
+  border-radius: 0;
+  background: transparent;
+  border: 2px solid white;
+}
+/* fill-in selected dot */
+.flickity-page-dots .dot.is-selected {
+  background: white;
+}
 .search-type-button {
 	margin: -1rem;
 	padding: 1rem;
