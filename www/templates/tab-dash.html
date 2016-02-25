@@ -1,0 +1,58 @@
+<ion-view view-title="Dashboard">
+
+  <ion-nav-title>
+    <img src="img/logo_header.svg">
+  </ion-nav-title>
+
+  <ion-nav-buttons side="primary">
+      <button class="button button-icon icon ion-location" ng-click="getMyLocation()"></button>
+  </ion-nav-buttons>
+
+  <ion-content scroll="false">
+
+		<!-- MAP CONTAINER -->
+    <div id="map_canvas">  <!-- data-tap-disabled="true" -->
+
+	 		<div class="bar row">
+	      <div class="button-bar col-80 col-offset-10">
+	        <button class="button button-outline button-royal" ng-click="toggleDrawer()">Toggle graph</button>
+	        <button class="button button-outline button-royal" ng-click="showMapOptions()">Map options</button>
+	      </div>
+	    </div>
+	    
+			<ion-drawer-vertical-wrapper direction="up" state="open" class="has-footer">
+		    <ion-drawer-vertical-content>
+		    	<div id="details_panel">
+		    		<div class="row" id="breakdown">
+		    		<!--
+		          <div class="medium-8 large-6 columns">
+		            <div class="row">
+		              <div class="small-6 columns">
+		                <p><label><strong>Point A elevation:</strong><input type="text" value="0" id="point_a_value" disabled /></label></p>
+		              </div>
+		              <div class="small-6 columns">
+		                <p><label><strong>Point B elevation:</strong><input type="text" value="0" id="point_b_value" disabled /></label></p>
+		              </div>
+		            </div>
+		            <div class="row">
+		              <div class="small-6 columns">
+		                <p><label><strong>Total distance:</strong><input type="text" value="0" id="total_distance" disabled /></label></p>
+		              </div>
+		              <div class="small-6 columns">
+		                <p><label><strong>Avg elevation change:</strong><input type="text" value="0" id="avg_incline" disabled /></label></p>
+		              </div>
+		            </div>
+		          </div>
+		        -->
+		          <div id="chart_panel" google-chart chart="chartObject"></div>
+		        </div>
+		    	</div>
+		    </ion-drawer-vertical-content>
+		    <ion-drawer-vertical-handle />
+			</ion-drawer-vertical-wrapper>
+
+    </div>
+		<!-- END MAP CONTAINER -->
+
+  </ion-content>
+</ion-view>

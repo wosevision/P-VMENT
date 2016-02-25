@@ -1,52 +1,25 @@
-# Foundation for Apps Template
+Ionic App Base
+=====================
 
-[![devDependency Status](https://david-dm.org/zurb/foundation-apps-template/dev-status.svg)](https://david-dm.org/zurb/foundation-apps-template#info=devDependencies)
+A starting project for Ionic that optionally supports using custom SCSS.
 
-This is the default template project for Foundation for Apps, powered by Gulp, Angular, and libsass. It provides you with a basic template to get started with Foundation for Apps and Angular.
+## Using this project
 
-If you're already an Angular developer, you may instead want to install the components into your own stack using Bower: `bower install foundation-apps`
+We recommend using the [Ionic CLI](https://github.com/driftyco/ionic-cli) to create new Ionic projects that are based on this project but use a ready-made starter template.
 
-## Requirements
-
-You'll need the following software installed to get started.
-
-  - [Node.js](http://nodejs.org): Use the installer for your OS.
-  - [Git](http://git-scm.com/downloads): Use the installer for your OS.
-    - Windows users can also try [Git for Windows](http://git-for-windows.github.io/).
-  - [Gulp](http://gulpjs.com/) and [Bower](http://bower.io): Run `npm install -g gulp bower`
-    - Depending on how Node is configured on your machine, you may need to run `sudo npm install -g gulp bower` instead, if you get an error with the first command.
-
-## Get Started
-
-Clone this repository, where `app` is the name of your app.
+For example, to start a new Ionic project with the default tabs interface, make sure the `ionic` utility is installed:
 
 ```bash
-git clone https://github.com/zurb/foundation-apps-template.git app
+$ npm install -g ionic
 ```
 
-Change into the directory.
+Then run:
 
 ```bash
-cd app
+$ ionic start myProject tabs
 ```
 
-Install the dependencies. If you're running Mac OS or Linux, you may need to run `sudo npm install` instead, depending on how your machine is configured.
+More info on this can be found on the Ionic [Getting Started](http://ionicframework.com/getting-started) page and the [Ionic CLI](https://github.com/driftyco/ionic-cli) repo.
 
-```bash
-npm install
-bower install
-```
-
-While you're working on your project, run:
-
-```bash
-npm start
-```
-
-This will compile the Sass and assemble your Angular app. **Now go to `localhost:8080` in your browser to see it in action.** When you change any file in the `client` folder, the appropriate Gulp task will run to build new files.
-
-To run the compiling process once, without watching any files, use the `build` command.
-
-```bash
-npm start build
-```
+## Issues
+Issues have been disabled on this repo, if you do find an issue or have a question consider posting it on the [Ionic Forum](http://forum.ionicframework.com/).  Or else if there is truly an error, follow our guidelines for [submitting an issue](http://ionicframework.com/submit-issue/) to the main Ionic repository.

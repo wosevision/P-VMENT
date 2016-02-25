@@ -1,0 +1,12 @@
+{
+  "name": "pavmentUpdate",
+  "app_id": "ec108f81",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*"
+  ]
+}
