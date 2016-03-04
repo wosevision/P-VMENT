@@ -25,7 +25,7 @@ $dark:                            #444 !default;
   width: 100%;
   position: absolute; }
 
-#chart_panel {
+.chart {
   width: 100%;
   height: 100%; }
 
@@ -3006,7 +3006,7 @@ $dark:                            #444 !default;
  * http://cssreset.com
  */
 html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+h1, h2, h3, h4, h5, h6, p, .editing-content, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
@@ -3589,7 +3589,7 @@ ion-infinite-scroll {
  * Typography
  * --------------------------------------------------
  */
-p {
+p, .editing-content {
   margin: 0 0 10px; }
 
 small {
@@ -3698,11 +3698,11 @@ blockquote {
   margin: 0 0 20px;
   padding: 10px 20px;
   border-left: 5px solid gray; }
-  blockquote p {
+  blockquote p, blockquote .editing-content {
     font-weight: 300;
     font-size: 17.5px;
     line-height: 1.25; }
-  blockquote p:last-child {
+  blockquote p:last-child, blockquote .editing-content:last-child {
     margin-bottom: 0; }
   blockquote small {
     display: block;
@@ -5685,7 +5685,7 @@ ion-tabs.tabs-color-active-dark .tab-item {
   .item h5, .item h6 {
     margin: 0 0 3px 0;
     font-size: 10px; }
-  .item p {
+  .item p, .item .editing-content {
     color: #666;
     font-size: 14px;
     margin-bottom: 2px; }
@@ -5695,7 +5695,8 @@ ion-tabs.tabs-color-active-dark .tab-item {
   .item h4:last-child,
   .item h5:last-child,
   .item h6:last-child,
-  .item p:last-child {
+  .item p:last-child,
+  .item .editing-content:last-child {
     margin-bottom: 0; }
   .item .badge {
     display: -webkit-box;
@@ -5925,6 +5926,7 @@ ion-tabs.tabs-color-active-dark .tab-item {
 .item h5,
 .item h6,
 .item p,
+.item .editing-content,
 .item-content,
 .item-content h1,
 .item-content h2,
@@ -5932,7 +5934,8 @@ ion-tabs.tabs-color-active-dark .tab-item {
 .item-content h4,
 .item-content h5,
 .item-content h6,
-.item-content p {
+.item-content p,
+.item-content .editing-content {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap; }
@@ -5980,6 +5983,7 @@ a.item-content {
 .item-text-wrap h5,
 .item-text-wrap h6,
 .item-text-wrap p,
+.item-text-wrap .editing-content,
 .item-complex.item-text-wrap .item-content,
 .item-body h1,
 .item-body h2,
@@ -5987,7 +5991,8 @@ a.item-content {
 .item-body h4,
 .item-body h5,
 .item-body h6,
-.item-body p {
+.item-body p,
+.item-body .editing-content {
   overflow: visible;
   white-space: normal; }
 
@@ -5998,7 +6003,8 @@ a.item-content {
 .item-complex.item-text-wrap h4,
 .item-complex.item-text-wrap h5,
 .item-complex.item-text-wrap h6,
-.item-complex.item-text-wrap p {
+.item-complex.item-text-wrap p,
+.item-complex.item-text-wrap .editing-content {
   overflow: visible;
   white-space: normal; }
 
@@ -6354,7 +6360,7 @@ button.item.item-button-right {
   padding: 16px;
   text-overflow: inherit;
   white-space: normal; }
-  .item-body h1, .item-body h2, .item-body h3, .item-body h4, .item-body h5, .item-body h6, .item-body p {
+  .item-body h1, .item-body h2, .item-body h3, .item-body h4, .item-body h5, .item-body h6, .item-body p, .item-body .editing-content {
     margin-top: 16px;
     margin-bottom: 16px; }
 
@@ -9766,17 +9772,67 @@ a.button {
     padding: 0;
     min-height: 6rem;
     padding: 2rem; }
+  .item-image img {
+    opacity: 0.3; }
   .item-image img:first-child, .item-image .list-img {
-    width: 100%;
+    height: 100%;
+    width: auto;
     position: absolute;
     left: 0;
     top: 0;
     z-index: -1;
-    min-height: 5rem;
-    opacity: 0.3; }
-  .item-image h1, .item-image h2, .item-image h3, .item-image h4, .item-image h5, .item-image h6, .item-image p {
+    min-height: 5rem; }
+  .item-image h1, .item-image h2, .item-image h3, .item-image h4, .item-image h5, .item-image h6, .item-image p, .item-image .editing-content {
     color: #fff;
     text-align: left;
     font-weight: bold; }
-  .item-image p {
+  .item-image p, .item-image .editing-content {
     font-weight: normal; }
+
+.content-pano {
+  position: relative;
+  width: 100%;
+  height: auto;
+  background: #fff;
+  box-shadow: 0 -100px 70px rgba(0, 0, 0, 0.7); }
+  .content-pano .cover-text {
+    position: absolute;
+    top: -90px;
+    left: 0;
+    padding: 15px 10px;
+    z-index: 100; }
+    .content-pano .cover-text h1, .content-pano .cover-text h2, .content-pano .cover-text h3, .content-pano .cover-text h4, .content-pano .cover-text h5, .content-pano .cover-text h6, .content-pano .cover-text p, .content-pano .cover-text .editing-content {
+      color: #fff;
+      text-align: left;
+      font-weight: bold; }
+    .content-pano .cover-text h1, .content-pano .cover-text h2 {
+      margin: 0; }
+    .content-pano .cover-text h2 {
+      font-size: 18px; }
+
+.cover-pano {
+  position: relative;
+  padding-bottom: 46.25%;
+  margin-top: -25px;
+  overflow: hidden; }
+  .cover-pano img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    width: 100%;
+    opacity: 0.8; }
+
+.no-content {
+  color: #ddd; }
+  .no-content a {
+    color: #f981a1; }
+
+.editing-content {
+  padding: 10px;
+  background: #f8f8f8;
+  border-radius: 5px;
+  width: 100%;
+  min-height: 100px; }

@@ -3,30 +3,48 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title></title>
+    <title>P&Amacr;VMENT</title>
 
 
     <!-- compiled css output -->
+    <link href="lib/ionic-filter-bar/dist/ionic.filter.bar.css" rel="stylesheet">
     <link href="lib/ion-drawer-vertical/src/ionic.contrib.drawer.vertical.css" rel="stylesheet">
     <link href="css/ionic.app.css" rel="stylesheet">
-
-    <!-- ionic/angularjs js -->
+    
+    <!-- ionic/angular js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
-<script src="lib/ionic-platform-web-client/dist/ionic.io.bundle.min.js"></script>
+    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+    <script src="lib/ionic-platform-web-client/dist/ionic.io.bundle.min.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
     <!-- Cordova is bootstrapped by ionic-platform-web-client, uncomment this if you remove ionic-platform-web-client... -->
-<!-- <script src="cordova.js"></script> -->
+    <!-- <script src="cordova.js"></script> -->
 
-    <!-- your app's js -->
+    <!-- app js -->
     <script src="lib/angular-google-chart/ng-google-chart.js"></script>
     <script src="lib/ion-drawer-vertical/src/ionic.contrib.drawer.vertical.js"></script>
+    <script src="lib/ionic-filter-bar/dist/ionic.filter.bar.js"></script>
+    <script src="lib/imgcache.js/js/imgcache.js"></script>
+    <script src="lib/angular-imgcache/angular-imgcache.js"></script>
 
     <script src="js/app.js"></script>
-    <script src="js/controllers.js"></script>
-    <script src="js/services.js"></script>
+    <script src="js/directives.init.js"></script>
+      <script src="js/directives/headerShrink.directive.js"></script>
+    <script src="js/controllers.init.js"></script>
+      <script src="js/controllers/dashboard.controller.js"></script>
+      <script src="js/controllers/hillwizard.controller.js"></script>
+      <script src="js/controllers/savedhills.controller.js"></script>
+      <script src="js/controllers/savedhills.detail.controller.js"></script>
+      <script src="js/controllers/userprofile.controller.js"></script>
+    <script src="js/services.init.js"></script>
+      <script src="js/services/Map.service.js"></script>
+      <script src="js/services/Panorama.service.js"></script>
+      <script src="js/services/Hills.service.js"></script>
+      <script src="js/services/Elevation.service.js"></script>
+      <script src="js/services/Chart.service.js"></script>
+
   </head>
-  <body ng-app="starter">
+  <body ng-app="pavment">
     <!--
       The nav bar that will be updated as we navigate between views.
     -->

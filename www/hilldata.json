@@ -1,0 +1,145 @@
+[
+  {
+    "id": 0,
+    "guid": "49dbe408-b6ef-4c61-8d34-8271da23790b",
+    "name": "Fountain Avenue",
+    "locale": "Denio, Washington",
+    "coords": {
+      "lat": 40.59697267,
+      "lng": -79.73604941
+    },
+    "distance": 6.72,
+    "steepness": -7.7089,
+    "notes": "Nulla incididunt deserunt aliquip adipisicing culpa ex sit. Pariatur magna labore esse reprehenderit et esse aliqua deserunt nostrud eu ex. Culpa quis veniam voluptate veniam cupidatat do adipisicing consequat et eu ea.\r\n"
+  },
+  {
+    "id": 1,
+    "guid": "fed69b04-85b6-4729-945e-1d15fa286aa6",
+    "name": "Hall Street",
+    "locale": "Knowlton, Nevada",
+    "coords": {
+      "lat": 40.84381102,
+      "lng": -79.65548644
+    },
+    "distance": 4.85,
+    "steepness": -5.6393,
+    "notes": "Veniam eu non minim ullamco cupidatat ea. Dolore proident proident pariatur consequat excepteur esse consequat officia tempor et consectetur. Cillum qui id eiusmod dolore reprehenderit voluptate. Consequat sunt aute velit reprehenderit veniam consectetur mollit adipisicing. Ullamco voluptate irure qui ipsum irure eu.\r\n"
+  },
+  {
+    "id": 2,
+    "guid": "82d00995-e8ab-4507-8021-9a34ee2ba1a0",
+    "name": "Amherst Street",
+    "locale": "Monument, Illinois",
+    "coords": {
+      "lat": 41.26020116,
+      "lng": -80.47506549
+    },
+    "distance": 7.22,
+    "steepness": -3.8752,
+    "notes": "Esse cupidatat est nisi adipisicing ut velit pariatur. Aute laboris cupidatat nulla fugiat quis. Consectetur sint non esse sunt consectetur fugiat commodo culpa. Occaecat exercitation nulla pariatur laboris ea non. Exercitation fugiat in ipsum consectetur occaecat nulla dolor commodo nulla mollit. Ex nulla dolor deserunt voluptate veniam ullamco.\r\n"
+  },
+  {
+    "id": 3,
+    "guid": "ec92b632-e509-4a62-9d95-f57b8449b15a",
+    "name": "Fuller Place",
+    "locale": "Riegelwood, Arizona",
+    "coords": {
+      "lat": 40.65238785,
+      "lng": -79.9827708
+    },
+    "distance": 15.5,
+    "steepness": -3.976,
+    "notes": "Ea amet proident fugiat velit laborum occaecat duis adipisicing duis incididunt. Nulla anim deserunt aute id. Esse sit id nulla ex tempor voluptate elit id velit deserunt magna non incididunt minim.\r\n"
+  },
+  {
+    "id": 4,
+    "guid": "e599d324-6c5e-4ab4-8eb7-09360808b61b",
+    "name": "Olive Street",
+    "locale": "Gambrills, Georgia",
+    "coords": {
+      "lat": 41.70066,
+      "lng": -80.08755688
+    },
+    "distance": 9.29,
+    "steepness": 2.8148,
+    "notes": "Ut irure incididunt dolor non minim irure exercitation cillum laboris Lorem ex ipsum laboris. Magna culpa duis mollit laboris do est nostrud consequat officia. Sunt Lorem minim consequat irure dolor laboris irure velit excepteur.\r\n"
+  },
+  {
+    "id": 5,
+    "guid": "2fbf944d-7ffa-4cf6-84f8-dc92a4a3d550",
+    "name": "Vandam Street",
+    "locale": "Newkirk, District Of Columbia",
+    "coords": {
+      "lat": 40.85609911,
+      "lng": -80.45011113
+    },
+    "distance": 12.74,
+    "steepness": -2.0873,
+    "notes": "Nostrud veniam proident laboris excepteur mollit sit laboris ullamco veniam aute consectetur deserunt sint occaecat. Irure aliqua occaecat Lorem labore laboris et duis minim laboris fugiat labore. Ad exercitation duis sit sunt aute reprehenderit. Eiusmod aliqua pariatur ex amet et culpa sint irure reprehenderit et minim. Veniam cillum mollit cillum dolor.\r\n"
+  },
+  {
+    "id": 6,
+    "guid": "5a49e754-bc96-4197-af42-e6af38fbd028",
+    "name": "Seagate Avenue",
+    "locale": "Sedley, Alaska",
+    "coords": {
+      "lat": 41.5528802,
+      "lng": -79.69863142
+    },
+    "distance": 1.08,
+    "steepness": 7.3728,
+    "notes": "Consequat aute minim qui amet ex excepteur est cillum ex ipsum cupidatat consequat officia sit. Aliquip labore non aliquip sint commodo pariatur tempor voluptate laborum. Culpa dolor do aliquip commodo minim sunt dolor ut dolor magna fugiat.\r\n"
+  },
+  {
+    "id": 7,
+    "guid": "984b7ba9-3ef6-4a34-8224-0c4a6c388d5a",
+    "name": "Devon Avenue",
+    "locale": "Marienthal, Virginia",
+    "coords": {
+      "lat": 40.5923187,
+      "lng": -79.83312482
+    },
+    "distance": 9.56,
+    "steepness": 2.4162,
+    "notes": "Incididunt aliquip anim qui reprehenderit sunt. Reprehenderit aliquip et mollit culpa aute minim cillum adipisicing cillum culpa veniam cillum labore. Reprehenderit excepteur consectetur anim non aute adipisicing esse non pariatur nulla nisi magna et ut. Do ullamco et cillum aliqua culpa anim voluptate minim commodo cupidatat. Sit laboris anim laborum aute adipisicing consectetur incididunt cillum excepteur dolore nostrud do. Ea elit fugiat incididunt cillum amet non. Anim reprehenderit voluptate mollit reprehenderit non duis mollit irure sunt ex nulla.\r\n"
+  },
+  {
+    "id": 8,
+    "guid": "700f35fe-ef17-4ab4-951d-370b782ef7c3",
+    "name": "Prospect Place",
+    "locale": "Rivereno, Guam",
+    "coords": {
+      "lat": 40.7218433,
+      "lng": -80.06022583
+    },
+    "distance": 7.3,
+    "steepness": -4.796,
+    "notes": "Nulla in magna magna cupidatat magna cupidatat consectetur esse quis dolor irure. Ea voluptate mollit nulla anim esse voluptate duis aliquip duis deserunt qui est fugiat nostrud. Fugiat elit minim est pariatur est. Consectetur reprehenderit ipsum adipisicing ea sint minim proident. Dolor amet mollit ut voluptate sunt aliqua nostrud laboris Lorem occaecat. Elit adipisicing incididunt amet id est laborum ullamco. Eu labore proident nulla velit reprehenderit ea excepteur dolore sint et.\r\n"
+  },
+  {
+    "id": 9,
+    "guid": "718cb749-5c77-4648-9816-93f63f88b350",
+    "name": "Woodpoint Road",
+    "locale": "Elizaville, Pennsylvania",
+    "coords": {
+      "lat": 40.3794398,
+      "lng": -79.97371679
+    },
+    "distance": 11.95,
+    "steepness": 5.421,
+    "notes": "Aliqua eu labore aliquip et ut magna. Eiusmod laboris minim qui in irure pariatur et amet deserunt. Duis elit voluptate veniam sit laboris ad pariatur. Sunt id consectetur qui dolor enim occaecat deserunt ipsum enim dolor veniam nostrud reprehenderit.\r\n"
+  },
+  {
+    "id": 10,
+    "guid": "3bb147af-cec1-4f3b-9f0f-b748a32d518a",
+    "name": "Oak Street",
+    "locale": "Ferney, Federated States Of Micronesia",
+    "coords": {
+      "lat": 41.42522276,
+      "lng": -80.66697045
+    },
+    "distance": 9.56,
+    "steepness": 0.4419,
+    "notes": "Laborum dolore proident Lorem amet aliqua eiusmod esse et. Consectetur do aliqua exercitation laboris enim esse. Consequat quis anim dolore sunt aliquip culpa aliqua elit ea irure ipsum elit consectetur. Anim dolore est eiusmod mollit duis incididunt et ex. Sunt non fugiat sunt aliqua magna id pariatur ipsum duis nostrud tempor. Adipisicing Lorem nulla consequat adipisicing ut aliqua enim ad exercitation elit. Adipisicing tempor officia commodo veniam id deserunt tempor.\r\n"
+  }
+]

@@ -1,15 +1,46 @@
+
 <ion-view view-title="Saved Hills" class="with-bg">
+
+  <ion-nav-buttons side="primary">
+      <button class="button button-icon icon ion-ios-search-strong" ng-click="showSearch();"></button>
+  </ion-nav-buttons>
+
   <ion-content>
     <ion-list>
-      <ion-item class="item-dark item-remove-animate item-image item-icon-right" ng-repeat="hill in hills" type="item-text-wrap" href="#/tab/saved/{{hill.id}}">
-        <img ng-src="{{hill.face}}">
+      <ion-item class="item-dark item-divider" style="background: rgba(40,40,40,0.6);">
+        <span style="text-transform: uppercase;color: rgba(255,255,255,0.8);font-size: 12px;font-weight: bold;">Your saved hills</span>
+      </ion-item>
+      <ion-item class="item-dark item-remove-animate item-image item-icon-right" ng-repeat="hill in hills" type="item-text-wrap" href="#/tab/saved/{{hill.id}}" on-hold="openPopover($event)" on-release="closePopover()">
+        <img ng-src="{{ getPano(hill) }}">
         <h1 style="margin-top: 0;">{{hill.name}}</h1>
-        <p>Distance: {{hill.distance}}<br/>
-        Steepest angle: {{hill.steepness}}</p>
+        <p><span style="font-weight: 900;text-transform: uppercase;">Distance:</span> <span style="font-size:24px;font-weight: 200;">{{hill.distance}}km</span><br/>
+        <span style="font-weight: 900;text-transform: uppercase;">Steepest angle:</span> <span style="font-size:24px;font-weight: 200;">{{hill.steepness}}º</span></p>
         <i class="icon ion-chevron-right icon-accessory"></i>
 
         <ion-option-button class="button-assertive" ng-click="remove(hill)">
           Delete
+        </ion-option-button>
+
+        <ion-option-button class="button-positive" ng-click="share(hill)">
+          Share
+        </ion-option-button>
+      </ion-item>
+      <ion-item class="item-dark item-divider" style="background: rgba(40,40,40,0.6);">
+        <span style="text-transform: uppercase;text-transform: uppercase;color: rgba(255,255,255,0.8);font-size: 12px;font-weight: bold;">Saved community hills</span>
+      </ion-item>
+            <ion-item class="item-dark item-remove-animate item-image item-icon-right" ng-repeat="hill in hills" type="item-text-wrap" href="#/tab/saved/{{hill.id}}" on-hold="openPopover($event)" on-release="closePopover()">
+        <img ng-src="{{hill.pano}}">
+        <h1 style="margin-top: 0;">{{hill.name}}</h1>
+        <p><span style="font-weight: 900;text-transform: uppercase;">Distance:</span> <span style="font-size:24px;font-weight: 200;">{{hill.distance}}km</span><br/>
+        <span style="font-weight: 900;text-transform: uppercase;">Steepest angle:</span> <span style="font-size:24px;font-weight: 200;">{{hill.steepness}}º</span></p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+
+        <ion-option-button class="button-assertive" ng-click="remove(hill)">
+          Delete
+        </ion-option-button>
+
+        <ion-option-button class="button-positive" ng-click="share(hill)">
+          Share
         </ion-option-button>
       </ion-item>
     </ion-list>

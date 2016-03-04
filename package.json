@@ -20,7 +20,6 @@
     "cordova-plugin-whitelist",
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",
-    "com.ionic.keyboard",
     {
       "locator": "https://github.com/wf9a5m75/phonegap-googlemaps-plugin.git",
       "id": "plugin.google.maps",
@@ -28,10 +27,17 @@
         "API_KEY_FOR_ANDROID": "AIzaSyAQG8yVO7KVRQ-fgxEmBVhJdW59xSHx5Sc",
         "API_KEY_FOR_IOS": "AIzaSyBAPh3rPWS4U3yc-0FTNpXhwY3tjVS9Tqo"
       }
+    },
+    {
+      "locator": "https://github.com/EddyVerbruggen/cordova-plugin-actionsheet.git",
+      "id": "cordova-plugin-actionsheet"
+    },
+    {
+      "locator": "https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin.git",
+      "id": "cordova-plugin-x-socialsharing"
     }
   ],
   "cordovaPlatforms": [
-    "ios",
-    "android"
+    "ios"
   ]
 }

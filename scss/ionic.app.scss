@@ -20,6 +20,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 $royal:                           #F00B47 !default;
 $light:                           rgba(255,255,255,0.7) !default;
+$grey:                            #ddd !default;
 
 .scroll {
     height: 100%;
@@ -33,10 +34,9 @@ $light:                           rgba(255,255,255,0.7) !default;
 	position: absolute;
 }
 
-#chart_panel {
+.chart {
 	width: 100%;
 	height: 100%;
-
 }
 
 
@@ -60,20 +60,28 @@ background: -moz-linear-gradient(top,  rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 100%);
 background: -webkit-linear-gradient(top,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
 background: linear-gradient(to bottom,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
-
+  &.item.item-dark {
+    //background: rgba(80,80,80,0.2);
+  }
+  &.item-complex.item-dark > .item-content {
+   //background-color: transparent;
+  }
 	&.item-icon-right .item-content {
 		padding: 0;
   	min-height: 6rem;
 		padding: 2rem;
 	}
+  img {
+    opacity: 0.3;
+  }
   img:first-child, .list-img {
-    width: 100%;
+    height: 100%;
+    width: auto;
     position: absolute;
     left: 0;
     top: 0;
     z-index: -1;
   	min-height: 5rem;
-  	opacity: 0.3;
   }
   h1,h2,h3,h4,h5,h6,p {
   	color: #fff;
@@ -83,4 +91,63 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', e
   p {
   	font-weight: normal;
   }
+}
+
+// Item cover panorama image
+
+.content-pano {
+  position:relative;
+  width:100%;
+  height:auto;
+  background: #fff;
+  box-shadow: 0 -100px 70px rgba(0,0,0, 0.7);
+  .cover-text {
+    position: absolute;
+    top: -90px;
+    left: 0;
+    padding: 15px 10px;
+    z-index: 100;
+    h1,h2,h3,h4,h5,h6,p {
+      color: #fff;
+      text-align: left;
+      font-weight: bold;
+    }
+    h1, h2 {
+      margin: 0;
+    }
+    h2 {
+      font-size: 18px;
+    }
+  }
+}
+.cover-pano {
+  position:relative;
+  padding-bottom: 46.25%;
+  margin-top: -25px;
+  overflow: hidden;
+  img {
+    position:absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    width: 100%;
+    opacity: 0.8;
+  }
+}
+
+.no-content {
+  color: $grey;
+  a {
+    color: lighten( $royal, 25% );
+  }
+}
+.editing-content {
+  @extend p;
+  padding: 10px;
+  background: $stable;
+  border-radius: 5px;
+  width: 100%;
+  min-height: 100px;
 }

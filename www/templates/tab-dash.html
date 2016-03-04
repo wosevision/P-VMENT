@@ -1,3 +1,9 @@
+<ion-header-bar class="bar-subheader row">
+	<div class="button-bar col-80 col-offset-10">
+	  <button class="button button-outline button-royal" ng-click="toggleDrawer()">Toggle graph</button>
+	  <button class="button button-outline button-royal" ng-click="showMapOptions()">Map options</button>
+	</div>
+</ion-header-bar>
 <ion-view view-title="Dashboard">
 
   <ion-nav-title>
@@ -12,41 +18,39 @@
 
 		<!-- MAP CONTAINER -->
     <div id="map_canvas">  <!-- data-tap-disabled="true" -->
-
-	 		<div class="bar row">
-	      <div class="button-bar col-80 col-offset-10">
-	        <button class="button button-outline button-royal" ng-click="toggleDrawer()">Toggle graph</button>
-	        <button class="button button-outline button-royal" ng-click="showMapOptions()">Map options</button>
-	      </div>
-	    </div>
 	    
 			<ion-drawer-vertical-wrapper direction="up" state="open" class="has-footer">
 		    <ion-drawer-vertical-content>
-		    	<div id="details_panel">
-		    		<div class="row" id="breakdown">
-		    		<!--
-		          <div class="medium-8 large-6 columns">
-		            <div class="row">
-		              <div class="small-6 columns">
-		                <p><label><strong>Point A elevation:</strong><input type="text" value="0" id="point_a_value" disabled /></label></p>
-		              </div>
-		              <div class="small-6 columns">
-		                <p><label><strong>Point B elevation:</strong><input type="text" value="0" id="point_b_value" disabled /></label></p>
-		              </div>
-		            </div>
-		            <div class="row">
-		              <div class="small-6 columns">
-		                <p><label><strong>Total distance:</strong><input type="text" value="0" id="total_distance" disabled /></label></p>
-		              </div>
-		              <div class="small-6 columns">
-		                <p><label><strong>Avg elevation change:</strong><input type="text" value="0" id="avg_incline" disabled /></label></p>
-		              </div>
-		            </div>
-		          </div>
-		        -->
-		          <div id="chart_panel" google-chart chart="chartObject"></div>
-		        </div>
-		    	</div>
+			    <ion-slide-box show-pager="false">
+
+					  <ion-slide>
+		          <div google-chart class="chart" chart="chartObject[0]"></div>
+					  </ion-slide>
+
+					  <ion-slide>
+		          <div google-chart class="chart" chart="chartObject[1]"></div>
+					  </ion-slide>
+
+					  <ion-slide class="padding">
+	            <div class="row">
+	              <div class="col-50">
+	                <label><strong>Point A elevation:</strong><input type="text" ng-model="elevations.pointA" id="point_a_value" style="width: 50%" disabled /></label>
+	              </div>
+	              <div class="col-50">
+	                <label><strong>Point B elevation:</strong><input type="text" value="0" id="point_b_value" style="width: 50%" disabled /></label>
+	              </div>
+	            </div>
+	            <div class="row">
+	              <div class="col-50">
+	                <label><strong>Total distance:</strong><input type="text" value="0" id="total_distance" style="width: 50%" disabled /></label>
+	              </div>
+	              <div class="col-50">
+	                <label><strong>Avg elevation change:</strong><input type="text" value="0" id="avg_incline" style="width: 50%" disabled /></label>
+	              </div>
+	            </div>
+					  </ion-slide>
+					  
+					</ion-slide-box>
 		    </ion-drawer-vertical-content>
 		    <ion-drawer-vertical-handle />
 			</ion-drawer-vertical-wrapper>

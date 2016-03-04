@@ -5,10 +5,93 @@
   The Friends service returns an array of friend data
 -->
 <ion-view view-title="{{hill.name}}">
-  <ion-content class="padding">
-    <img ng-src="{{hill.face}}" style="width: 64px; height: 64px">
-    <p>
-      {{hill.lastText}}
-    </p>
+  <ion-content header-shrink scroll-event-interval="5" bg-class=".cover-pano">
+
+    <div class="cover-pano">
+      <img ng-src="{{ getPano(hill) }}" /> <!-- {{ getPano(hill) }} -->
+    </div>
+
+    <div class="content-pano padding">
+
+      <div class="cover-text" style="width: 100%;">
+        <ion-slide-box show-pager="false">
+          <ion-slide>
+            <h1>{{hill.name}}
+              <!-- <span class="badge badge-royal" style="vertical-align: middle;">{{hill.distance}}km</span> <span class="badge badge-calm" style="vertical-align: middle;">{{hill.steepness}}º</span> -->
+            </h1>
+            <h2>{{hill.locale}}</h2>
+          </ion-slide>
+
+          <ion-slide>
+            <img ng-src="http://placehold.it/640x90.gif?text=Chart+goes+here" style="width: 100%;">
+          </ion-slide>
+        </ion-slide-box>
+      </div>
+
+      <div class="card">
+        <div class="item item-royal item-divider">
+          <h2 style="color: #fff;"><strong>Details</strong></h2>
+        </div>
+        <a href="#" class="item item-icon-left item-text-wrap royal">
+          <i class="icon ion-ios-location-outline"></i>
+          Location
+          <span class="badge badge-royal">{{hill.coords.lat.toFixed(3)}}..., {{hill.coords.lng.toFixed(3)}}...</span><br/>
+        </a>
+
+        <div class="item item-icon-left item-button-right royal">
+          <i class="icon ion-ios-speedometer-outline"></i>
+          <!-- P&Amacr;VMENTgr&amacr;de -->
+          GR&Amacr;DE
+          <button class="button button-calm button">
+            <small>Manageable</small>
+          </button>
+        </div>
+      </div>
+
+      <p class="royal"><strong>Share hill:</strong><br/>
+        <button class="button button-small button-royal button-outline" ng-click="share(hill, 'twitter')">
+          <i class="icon ion-social-twitter-outline"></i>
+        </button>
+        <button class="button button-small button-royal button-outline" ng-click="share(hill, 'facebook')">
+          <i class="icon ion-social-facebook-outline"></i>
+        </button>
+        <button class="button button-small button-royal button-outline" ng-click="share(hill, 'email')">
+          <i class="icon ion-ios-email-outline"></i>
+        </button>
+        <button class="button button-small button-royal button-outline" ng-click="share(hill)">
+          <i class="icon ion-more"></i>
+        </button>
+      </p>
+
+      <div class="card">
+        <div class="item item-divider">
+          <h2><strong>Notes</strong></h2>
+        </div>
+
+        <div class="item item-text-wrap">
+          <span ng-hide="editorEnabled.notes">
+            <p>{{hill.notes}}</p>
+          </span>
+          <textarea class="editing-content" ng-model="editableContent.notes" ng-show="editorEnabled.notes">
+            {{editableContent.notes}}
+          </textarea>
+          <span class="no-content" ng-hide="hill.notes || editorEnabled.notes">
+            Nothing here yet! <small><a href="#" class="subdued" ng-click="enableEditor('notes')">Add notes &raquo;</a></small>
+          </span>
+        </div>
+
+        <div class="item item-divider text-right">
+          <a class="royal subdued" href="#" ng-click="enableEditor('notes')" ng-hide="editorEnabled.notes">
+            <i class="icon ion-compose"></i> Edit
+          </a>
+          <div ng-show="editorEnabled.notes">
+            <a href="#" ng-click="disableEditor()" class="button button-outline button-small button-stable">Cancel</a>&nbsp;
+            <a href="#" ng-click="save('notes')" class="button button-small button-royal">Save</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
   </ion-content>
 </ion-view>
