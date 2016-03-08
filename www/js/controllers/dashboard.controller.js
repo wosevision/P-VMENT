@@ -2,7 +2,7 @@ angular.module('pavment.controllers')
 .controller('DashCtrl', function($rootScope, $scope, $window, $ionicPlatform, $cordovaActionSheet, $ionDrawerVerticalDelegate, Elevation, Chart) {
   
   $scope.elevDisplay = false;
-  $scope.elevations = { pointA: 0, pointB: 0};
+  $scope.hillData = { pointA: 0, pointB: 0};
   $scope.chartObject = [{}];
 
   $scope.chartObject[0] = { 
@@ -63,12 +63,12 @@ angular.module('pavment.controllers')
         height: "80%"
       },
       slices: {
-        0: {color: 'purple'}, 
-        1: {color: '#2199e8'},
+        0: {color: '#0051f2'}, 
+        1: {color: '#0aeadf'},
         2: {color: '#8b8b8b'},
-        3: {color: '#3adb76'},
-        4: {color: '#ffae00'},
-        5: {color: '#ec5840'}
+        3: {color: '#29fc6f'},
+        4: {color: '#ffc200'},
+        5: {color: '#f00b47'}
       },
       legend: {
         textStyle: {
@@ -155,7 +155,33 @@ angular.module('pavment.controllers')
       });
     });
 
+    function pointACallback(results, status) {
+      if (status === google.maps.ElevationStatus.OK) {
+        if (results[0]) {
+          $scope.hillData.pointA = parseFloat( (results[0].elevation).toFixed(4) );
+          $rootScope.$broadcast('drawChart');
+        } else {
+         return 'No results found';
+        }
+      } else {
+        return 'Elevation service failed: ' + status;
+      }
+    }
+
+    function pointBCallback(results, status) {
+      if (status === google.maps.ElevationStatus.OK) {
+        if (results[0]) {
+          $scope.hillData.pointB = parseFloat( (results[0].elevation).toFixed(4) );
+        } else {
+         return 'No results found';
+        }
+      } else {
+        return 'Elevation service failed: ' + status;
+      }
+    }
+
     $scope.addPoint = function(latLng, id) {
+
       if (id == 'A') {
         $scope.Map.addMarker({
           'position': latLng,
@@ -164,7 +190,7 @@ angular.module('pavment.controllers')
           //'draggable': true
         }, function(marker) {
           //console.log(Elevation.point(latLng));
-          $scope.elevations.pointA = Elevation.point(latLng);
+          Elevation.point(latLng, pointACallback);
           $scope.markers.pointA = marker;
         });
       } else {
@@ -174,7 +200,7 @@ angular.module('pavment.controllers')
           'animation': animation
           //'draggable': true
         }, function(marker) {
-          Elevation.point(latLng);
+          Elevation.point(latLng, pointBCallback);
           $scope.markers.pointB = marker;
         });
       }
@@ -188,10 +214,10 @@ angular.module('pavment.controllers')
       }, function(line) {
         $scope.polyline = line;
       });
-      $scope.distance = Elevation.distance(path);
+      $scope.hillData.distance = Elevation.distance(path);
       
       Elevation.path(path, function(data) {
-        Chart.sync(data, $scope.distance);
+        Chart.sync(data, $scope.hillData.distance);
       });
     }
 

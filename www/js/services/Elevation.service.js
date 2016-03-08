@@ -12,21 +12,11 @@ angular.module('pavment.services')
   });
 
   return {
-    point: function(point) {
+    point: function(point, callback) {
       elevator.getElevationForLocations({
         'locations': [point]
-      }, function(results, status) {
-        if (status === google.maps.ElevationStatus.OK) {
-          // Retrieve the first result
-          if (results[0]) {
-            return height = parseFloat( (results[0].elevation).toFixed(4) );//{ latLng: point, metres: parseFloat( (results[0].elevation).toFixed(4) ) };
-          } else {
-           return 'No results found';
-          }
-        } else {
-          return 'Elevation service failed: ' + status;
-        }
-      });
+      }, callback);
+        $rootScope.$broadcast('drawChart');
     },
     distance: function(path) {
       var R = 6371000; // km
@@ -52,7 +42,6 @@ angular.module('pavment.services')
         } else {
           output = 'Elevation service failed: ' + status;
         }
-        $rootScope.$broadcast('drawChart');
         return callback(output);
       });
     }
