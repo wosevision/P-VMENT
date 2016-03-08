@@ -1,25 +1,30 @@
-Ionic App Base
-=====================
+PA̅VMENT is an longboarding app for plotting elevation and mapping sweet hills built with the [Ionic Framework](http://ionicframework.com/) and Google APIs.
 
-A starting project for Ionic that optionally supports using custom SCSS.
+## How to use this app
 
-## Using this project
+*This app does not work out of the box*. It is missing the platforms, plugins, dependencies, and libraries.
 
-We recommend using the [Ionic CLI](https://github.com/driftyco/ionic-cli) to create new Ionic projects that are based on this project but use a ready-made starter template.
+To use this, use every CLI known to mankind: NPM, Bower, Gulp, Cordova, and of course Ionic (to name a few).
 
-For example, to start a new Ionic project with the default tabs interface, make sure the `ionic` utility is installed:
+### With the Ionic tool:
 
-```bash
-$ npm install -g ionic
-```
-
-Then run:
+Take the name after `ionic-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
 
 ```bash
-$ ionic start myProject tabs
+$ sudo npm install
+$ sudo bower install
+$ ...etc
 ```
 
-More info on this can be found on the Ionic [Getting Started](http://ionicframework.com/getting-started) page and the [Ionic CLI](https://github.com/driftyco/ionic-cli) repo.
+Then, to run it, cd into `pavment` and run:
+
+```bash
+$ ionic platform add ios
+$ ionic state reset
+$ ionic emulate ios
+```
+
+Substitute ios for android if not on a Mac, but if you can, the ios development toolchain is a lot easier to work with until you need to do anything custom to Android.
 
 ## Issues
-Issues have been disabled on this repo, if you do find an issue or have a question consider posting it on the [Ionic Forum](http://forum.ionicframework.com/).  Or else if there is truly an error, follow our guidelines for [submitting an issue](http://ionicframework.com/submit-issue/) to the main Ionic repository.
+Issues have been disabled on this repo, if you do find an issue or have a question consider posting it on the [Ionic Forum](http://forum.ionicframework.com/).  Or else if there is truly an error, follow our guidelines for [submitting an issue](http://ionicframework.com/contribute/#issues) to the main Ionic repository. On the other hand, pull requests are welcome here!
