@@ -34,15 +34,15 @@
 					  <ion-slide class="padding">
 	            <div class="row">
 	              <div class="col-50">
-	                <label><strong>Point A elevation:</strong><input type="text" ng-model="elevations.pointA" value="{{elevations.pointA}}" id="point_a_value" style="width: 50%" disabled /></label>
+	                <label><strong>Point A elevation:</strong><input type="text" ng-model="hillData.pointA" id="point_a_value" style="width: 50%" disabled /></label>
 	              </div>
 	              <div class="col-50">
-	                <label><strong>Point B elevation:</strong><input type="text" value="0" id="point_b_value" style="width: 50%" disabled /></label>
+	                <label><strong>Point B elevation:</strong><input type="text" ng-model="hillData.pointB" id="point_b_value" style="width: 50%" disabled /></label>
 	              </div>
 	            </div>
 	            <div class="row">
 	              <div class="col-50">
-	                <label><strong>Total distance:</strong><input type="text" value="0" id="total_distance" style="width: 50%" disabled /></label>
+	                <label><strong>Total distance:</strong><input type="text" ng-model="hillData.distance" id="total_distance" style="width: 50%" disabled /></label>
 	              </div>
 	              <div class="col-50">
 	                <label><strong>Avg elevation change:</strong><input type="text" value="0" id="avg_incline" style="width: 50%" disabled /></label>

@@ -56,22 +56,22 @@ angular.module('pavment.services')
           elevationChange = (elevations[i].elevation - elevations[i-1].elevation)/distanceChunk;
 
           if (elevationChange > 0.03) { // UPHILL HAUL
-            styles = 'color: purple; stroke-width: 3;';
+            styles = 'color: #0051f2; stroke-width: 3;';
             steep[0]++;
           } else if (elevationChange <= 0.03 && elevationChange > 0.005) { // UPHILL CLIMB
-            styles = 'color: #2199e8; stroke-width: 3;';
+            styles = 'color: #0aeadf; stroke-width: 3;';
             steep[1]++;
           } else if (elevationChange <= 0.005 && elevationChange >= -0.005) { // FLAT GROUND
             styles = 'color: #8b8b8b; stroke-width: 3;';
             steep[2]++;
           } else if (elevationChange < -0.005 && elevationChange >= -0.01) { // PLEASANT DOWNHILL
-            styles = 'color: #3adb76; stroke-width: 3;';
+            styles = 'color: #29fc6f; stroke-width: 3;';
             steep[3]++;
           } else if (elevationChange < -0.01 && elevationChange >= -0.03) { // MODERATE DOWNHILL
-            styles = 'color: #ffae00; stroke-width: 3;';
+            styles = 'color: #ffc200; stroke-width: 3;';
             steep[4]++;
           } else if (elevationChange < -0.03) { // STEEP DOWNHILL
-            styles = 'color: #ec5840; stroke-width: 3;';
+            styles = 'color: #f00b47; stroke-width: 3;';
             steep[5]++;
           };
           for (var j = 0; j < steep.length; j++) {
