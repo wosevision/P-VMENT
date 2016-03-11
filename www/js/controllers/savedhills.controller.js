@@ -1,12 +1,13 @@
 angular.module('pavment.controllers')
 .controller('SavedCtrl', function($scope, $location, Hills, $ionicFilterBar, $ionicPopover, $cordovaSocialSharing, Panorama) {
 
-
+  $scope.hills = [];
   // Hills.getAll().then(function(response) {
   //   $scope.hills = response;
   // });
-  Hills.getAll().success(function(response) {
-    $scope.hills = response;
+  Hills.getAll().then(function(response) {
+    console.log(response);
+    $scope.hills = response.data;
   });
   // $scope.hills = Hills.getAll().then(function(response) {
   //   return response;
@@ -35,7 +36,7 @@ angular.module('pavment.controllers')
     if (hill) {
       params = { 
         size: '640x281',
-        location: hill.coords.lat+ ',' +hill.coords.lng,
+        location: hill.path.coordinates[0][1] + ',' + hill.path.coordinates[0][0],
         fov: 120
       };
       return Panorama.get(params);

@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css?family=Fira+Sans:300,700,400,400italic,300italic);
 
 // Colors
 // -------------------------------
@@ -16,9 +17,9 @@ $dark:                            #444 !default;
 // Base
 // -------------------------------
 
-$font-family-sans-serif:           '-apple-system', "Helvetica Neue", "Roboto", "Segoe UI", sans-serif !default;
+$font-family-sans-serif:           'Fira Sans','-apple-system', "Helvetica Neue", "Roboto", "Segoe UI", sans-serif !default;
 
-$font-family-light-sans-serif:    '-apple-system', "HelveticaNeue-Light", "Roboto-Light", "Segoe UI-Light", sans-serif-light !default;
+$font-family-light-sans-serif:    'Fira Sans','-apple-system', "HelveticaNeue-Light", "Roboto-Light", "Segoe UI-Light", sans-serif-light !default;
 $font-family-serif:               serif !default;
 $font-family-monospace:           monospace !default;
 

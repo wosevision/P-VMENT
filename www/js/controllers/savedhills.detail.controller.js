@@ -9,16 +9,17 @@ angular.module('pavment.controllers')
   // Hills.get($stateParams.hillID).success(function(res){
   //   $scope.hill = res;
   // });
+  $scope.hill = {};
 
-  Hills.getAll().success(function(response) {
-    $scope.hill = response[$stateParams.hillID];
+  Hills.get($stateParams.hillID).then(function(response) {
+    $scope.hill = response.data;
   });
 
   $scope.getPano = function(hill) {
     if (hill) {
       params = { 
         size: '640x281',
-        location: hill.coords.lat+ ',' +hill.coords.lng,
+        location: hill.path.coordinates[0][1] + ',' + hill.path.coordinates[0][0],
         fov: 120
       };
       return Panorama.get(params);

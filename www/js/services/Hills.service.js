@@ -21,23 +21,20 @@ angular.module('pavment.services')
 ]
 */
 
-//var hills = [];
-
   return {
-    hills: [],
     getAll: function() {
       // $http.get('hilldata.json', { cache: true }).then(function(res){
       //   hills = res;
       // });
-      return this.hills = $http.get('hilldata.json', { cache: true });
+      return $http.get('https://desolate-atoll-24478.herokuapp.com/hills').then(function(result) {
+        return result.data;
+      });
     },
     
     // VVV-- NOT CURENTLY WORKING --VVV
     get: function(id) {
-      //alert('1');
-      return this.getAll().success(function(res){
-      //alert(res[id].name);
-        return res[id];
+      return $http.get('https://desolate-atoll-24478.herokuapp.com/hills/'+id).then(function(result) {
+        return result.data;
       });
     },
     remove: function(hill) {
