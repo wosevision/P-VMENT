@@ -16,38 +16,48 @@
 
   <ion-content class="row" scroll="false">
   
-      <div class="list card col-center" style="margin: 0 auto;">
+      <div class="list card col-center" style="margin: 0 auto;width: 80%;">
 
         <div class="item item-icon-left">
-         Hill Wizard
-            <i class="icon ion-map"></i>
+          <strong>Ride Wizard</strong>
+          <i class="icon ion-ios-color-wand-outline"></i>
         </div>
+        <label class="item item-input item-select">
+          <div class="input-label royal">
+            Distance range
+          </div>
+          <select>
+            <option value="">&#60; 1km</option>
+            <option value="">1-2km</option>
+            <option value="">3-5km</option>
+            <option value="">6-10km</option>
+            <option value="">&#62; 10km</option>
+          </select>
+        </label>
+  <div class="item item-divider">
+    Intensity <span class="item-note">{{ getIntensity(intensity) || 'Select an intensity...' }}</span>
+  </div>
+        <div class="item range range-royal">
+          <i class="icon ion-ios-cart"></i>
+          <input type="range" name="intensity" min="0" value="50" step="10" max="100" ng-model="intensity">
+          <i class="icon ion-jet"></i>
+        </div>
+  <div class="item item-divider">
+    Style
+  </div>
+        <div class="item item-royal item-body">
 
-        <div class="item item-dark item-body">
-          <!-- <img class="full-image" src="delorean.jpg"> -->
-
-          <ion-slide-box>
-            <ion-slide>
-            <img ng-src="img/bomb.svg" />
-            </ion-slide>
-            <ion-slide>
-            <img ng-src="img/carve.svg" />
-            </ion-slide>
-            <ion-slide>
-            <img ng-src="img/slide.svg" />
-            </ion-slide>
-            <ion-slide>
-            <img ng-src="img/distance.svg" />
-            </ion-slide>
-            <ion-slide>
-            <img ng-src="img/trick.svg" />
+          <ion-slide-box show-pager="false">
+            <ion-slide ng-repeat="slide in slides track by $index" style="text-align: center;">
+              <h2 class="light">{{ slide.label }}</h2>
+              <img ng-src="{{ slide.path }}" />
             </ion-slide>
           </ion-slide-box>
-<!--           <p>
-            <a href="#" class="subdued">1 Like</a>
-            <a href="#" class="subdued">5 Comments</a>
-          </p> -->
+
         </div>
+        <button class="button button-full button-positive ion-chevron-right" style="margin: 0 0 -1px 0">
+  Get rolling
+</button>
 
       </div>
   </ion-content>
