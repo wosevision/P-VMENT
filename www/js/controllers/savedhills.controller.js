@@ -2,18 +2,11 @@ angular.module('pavment.controllers')
 .controller('SavedCtrl', function($scope, $location, Hills, $ionicFilterBar, $ionicPopover, $cordovaSocialSharing, Panorama) {
 
   $scope.hills = [];
-  // Hills.getAll().then(function(response) {
-  //   $scope.hills = response;
-  // });
+  
   Hills.getAll().then(function(response) {
     console.log(response);
     $scope.hills = response.data;
   });
-  // $scope.hills = Hills.getAll().then(function(response) {
-  //   return response;
-  // });
-
-  // $scope.hills = Hills.getAll();
 
   var template ='<ion-popover-view><ion-header-bar> <h1 class="title">Elevation graph</h1> </ion-header-bar> <ion-content><img width="100%" src="img/graph_example.png" /><p class="padding"><small>Link:<br/><strong>'+$location.path()+'</strong><small></p></ion-content></ion-popover-view>';
 
