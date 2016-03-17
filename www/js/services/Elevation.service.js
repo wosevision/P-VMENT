@@ -16,7 +16,7 @@ angular.module('pavment.services')
       elevator.getElevationForLocations({
         'locations': [point]
       }, callback);
-        $rootScope.$broadcast('drawChart');
+      $rootScope.$broadcast('drawChart');
     },
     distance: function(path) {
       var R = 6371000; // km

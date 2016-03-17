@@ -1,8 +1,8 @@
 angular.module('pavment.controllers')
-.controller('DashCtrl', function($rootScope, $scope, $window, $ionicPlatform, $cordovaActionSheet, $ionDrawerVerticalDelegate, Elevation, Chart) {
+.controller('DashCtrl', function($rootScope, $scope, $window, $ionicPlatform, $cordovaActionSheet, $ionDrawerVerticalDelegate, $ionicPopover, Elevation, Chart) {
   
   $scope.elevDisplay = false;
-  $scope.hillData = { pointA: 0, pointB: 0};
+  $scope.hillData = [0, 0];
   $scope.chartObject = [{}];
 
   $scope.chartObject[0] = { 
@@ -92,6 +92,30 @@ angular.module('pavment.controllers')
     }, 0);
   });
 
+
+  $scope.popover = $ionicPopover.fromTemplate(
+    '<ion-popover-view><ion-header-bar> <h1 class="title">Hill actions</h1> </ion-header-bar> <ion-content><button class="button button-full button-outline button-royal">Save hill</button><button class="button button-full button-outline button-stable">Edit path</button></ion-content></ion-popover-view>',
+    { scope: $scope }
+  );
+  $scope.openPopover = function($event) {
+    $scope.popover.show($event);
+  };
+  $scope.closePopover = function() {
+    $scope.popover.hide();
+  };
+  //Cleanup the popover when we're done with it!
+  $scope.$on('$destroy', function() {
+    $scope.popover.remove();
+  });
+  // Execute action on hide popover
+  $scope.$on('popover.hidden', function() {
+    // Execute action
+  });
+  // Execute action on remove popover
+  $scope.$on('popover.removed', function() {
+    // Execute action
+  });
+
   /* Quick-n-dirty delegate function to handle
   opening and closing of bottom drawer */
   $scope.toggleDrawer = function() {
@@ -102,7 +126,7 @@ angular.module('pavment.controllers')
   };
 
   // MAP VARIABLES
-  $scope.markers = { 'pointA': '', 'pointB': ''};
+  $scope.markers = ['',''];
   $scope.path = [];
   $scope.polyline;
 
@@ -132,87 +156,64 @@ angular.module('pavment.controllers')
       // INIT
       $scope.Map.addEventListener($window.plugin.google.maps.event.MAP_LONG_CLICK, function(latLng){
 
-        if ($scope.markers.pointA == '' && $scope.markers.pointB == '') {
+        if ($scope.markers[0] == '' && $scope.markers[1] == '') {
           $scope.path[0] = latLng;
-          $scope.addPoint(latLng, 'A');
+          $scope.addPoint(latLng, 0);
           //displayLocationElevation(latLng, elevator, infowindow, document.getElementById('point_a_value') );
 
-        } else if ($scope.markers.pointA != '' && $scope.markers.pointB == '') {
+        } else if ($scope.markers[0] != '' && $scope.markers[1] == '') {
           $scope.path[1] = latLng;
-          $scope.addPoint(latLng, 'B');
+          $scope.addPoint(latLng, 1);
           //displayLocationElevation(latLng, elevator, infowindow, document.getElementById('point_b_value') );
           $scope.displayPathElevation($scope.path);
         } else {
           $scope.path = [];
-          $scope.polyline.remove();
-          $scope.markers.pointA.remove();
-          $scope.markers.pointB.remove();
-          $scope.markers.pointA = '';
-          $scope.markers.pointB = '';
+          $scope.Map.clear();
+          $scope.markers[0] = '';
+          $scope.markers[1] = '';
           $scope.path[0] = latLng;
-          $scope.addPoint(latLng, 'A');
+          $scope.addPoint(latLng, 0);
         }
       });
     });
 
-    function pointACallback(results, status) {
-      if (status === google.maps.ElevationStatus.OK) {
-        if (results[0]) {
-          $scope.hillData.pointA = parseFloat( (results[0].elevation).toFixed(4) );
-          $rootScope.$broadcast('drawChart');
-        } else {
-         return 'No results found';
-        }
-      } else {
-        return 'Elevation service failed: ' + status;
-      }
-    }
-
-    function pointBCallback(results, status) {
-      if (status === google.maps.ElevationStatus.OK) {
-        if (results[0]) {
-          $scope.hillData.pointB = parseFloat( (results[0].elevation).toFixed(4) );
-        } else {
-         return 'No results found';
-        }
-      } else {
-        return 'Elevation service failed: ' + status;
-      }
-    }
-
     $scope.addPoint = function(latLng, id) {
 
-      if (id == 'A') {
-        $scope.Map.addMarker({
-          'position': latLng,
-          'icon': icon,
-          'animation': animation
-          //'draggable': true
-        }, function(marker) {
-          //console.log(Elevation.point(latLng));
-          Elevation.point(latLng, pointACallback);
-          $scope.markers.pointA = marker;
-        });
-      } else {
-        $scope.Map.addMarker({
-          'position': latLng,
-          'icon': icon,
-          'animation': animation
-          //'draggable': true
-        }, function(marker) {
-          Elevation.point(latLng, pointBCallback);
-          $scope.markers.pointB = marker;
-        });
+      function addCallback(results, status) {
+        if (status === google.maps.ElevationStatus.OK) {
+          if (results[0]) {
+            $scope.hillData[id] = parseFloat( (results[0].elevation).toFixed(4) );
+          } else {
+           return 'No results found';
+          }
+        } else {
+          return 'Elevation service failed: ' + status;
+        }
       }
+      $scope.Map.addMarker({
+        'position': latLng,
+        'icon': icon,
+        'animation': animation
+        //'draggable': true
+      }, function(marker) {
+        //console.log(Elevation.point(latLng));
+        Elevation.point(latLng, addCallback);
+        $scope.markers[id] = marker;
+      });
     }
-
     $scope.displayPathElevation = function(path) {
       $scope.Map.addPolyline({
         points: path,
-        'color' : '#F00B47',
+        'color' : 'rgba(240, 11, 71, 0.4)',
         'width': 3,
+        'geodesic': true
       }, function(line) {
         $scope.polyline = line;
+        $scope.polyline.on($window.plugin.google.maps.event.OVERLAY_CLICK, function(latLng, event) {
+          $scope.polyline.setColor("rgba(240, 11, 71, 0.8)");
+          $scope.polyline.setWidth(3);
+          $scope.openPopover(mapDiv);
+        });
       });
       $scope.hillData.distance = Elevation.distance(path);
       
