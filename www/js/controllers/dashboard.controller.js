@@ -1,6 +1,17 @@
 angular.module('pavment.controllers')
-.controller('DashCtrl', function($rootScope, $scope, $window, $ionicPlatform, $cordovaActionSheet, $ionDrawerVerticalDelegate, $ionicPopover, Elevation, Chart) {
+.controller('DashCtrl', function($rootScope, $scope, $window, $ionicPlatform, $cordovaActionSheet, $ionDrawerVerticalDelegate, $ionicPopover, $ionicModal, Elevation, Chart) {
   
+  $scope.Hill = {
+    name: '',
+    tags: [],
+    panorama: {
+      auto: true
+    },
+    coordinates: [[0,0],[0,0]],
+    distance: 0,
+    notes: ''
+  };
+
   $scope.elevDisplay = false;
   $scope.hillData = [0, 0];
   $scope.chartObject = [{}];
@@ -92,7 +103,30 @@ angular.module('pavment.controllers')
     }, 0);
   });
 
+  $ionicModal.fromTemplateUrl('modal.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+  $scope.openModal = function() {
+    //$scope.Map.setClickable(false);
+    $scope.modal.show();
+  };
+  $scope.closeModal = function() {
+    //$scope.Map.setClickable(true);
+    $scope.modal.hide();
+  };
+  //Cleanup the modal when we're done with it!
+  $scope.$on('$destroy', function() {
+    //$scope.Map.setClickable(true);
+    $scope.modal.remove();
+  });
 
+  /**
+   * [popover description]
+   * @type {[type]}
+   */
   $scope.popover = $ionicPopover.fromTemplate(
     '<ion-popover-view><ion-header-bar> <h1 class="title">Hill actions</h1> </ion-header-bar> <ion-content><button class="button button-full button-outline button-royal">Save hill</button><button class="button button-full button-outline button-stable">Edit path</button></ion-content></ion-popover-view>',
     { scope: $scope }
@@ -215,7 +249,7 @@ angular.module('pavment.controllers')
           $scope.openPopover(mapDiv);
         });
       });
-      $scope.hillData.distance = Elevation.distance(path);
+      $scope.Hill.distance = Elevation.distance(path);
       
       Elevation.path(path, function(data) {
         Chart.sync(data, $scope.hillData.distance);

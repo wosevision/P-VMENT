@@ -460,7 +460,6 @@
             settings = angular.extend({}, apiConfig.optionalSettings, settings);
 
             window.google.load('visualization', apiConfig.version, settings);
-            $rootScope.ElevationService = new window.google.maps.ElevationService;
         };
         var head = document.getElementsByTagName('head')[0];
         var script = document.createElement('script');

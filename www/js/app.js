@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('pavment', ['ionic','ionic.service.core', 'ngCordova', 'ionic.contrib.drawer.vertical', 'jett.ionic.filter.bar', 'googlechart', 'pavment.directives', 'pavment.controllers', 'pavment.services']) //'ionic-pullup',
+angular.module('pavment', ['ionic','ionic.service.core', 'ngCordova', 'ionic.contrib.drawer.vertical', 'jett.ionic.filter.bar', 'googlechart', 'ngTagsInput', 'pavment.directives', 'pavment.controllers', 'pavment.services']) //'ionic-pullup',
 
 .run(function($ionicPlatform, $rootScope, $cordovaStatusbar, Elevation, Chart) {
 

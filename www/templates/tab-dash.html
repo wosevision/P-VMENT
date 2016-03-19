@@ -13,6 +13,9 @@
   <ion-nav-buttons side="primary">
       <button class="button button-icon icon ion-location" ng-click="getMyLocation()"></button>
   </ion-nav-buttons>
+  <ion-nav-buttons side="secondary">
+      <button class="button button-icon icon ion-bookmark" ng-click="openModal()"></button>
+  </ion-nav-buttons>
 
   <ion-content scroll="false">
 
@@ -34,15 +37,15 @@
 					  <ion-slide class="padding">
 	            <div class="row">
 	              <div class="col-50">
-	                <label><strong>Point A elevation:</strong><input type="text" ng-model="hillData.pointA" id="point_a_value" style="width: 50%" disabled /></label>
+	                <label><strong>Point A elevation:</strong><input type="text" ng-model="hillData[0]" id="point_a_value" style="width: 50%" disabled /></label>
 	              </div>
 	              <div class="col-50">
-	                <label><strong>Point B elevation:</strong><input type="text" ng-model="hillData.pointB" id="point_b_value" style="width: 50%" disabled /></label>
+	                <label><strong>Point B elevation:</strong><input type="text" ng-model="hillData[1]" id="point_b_value" style="width: 50%" disabled /></label>
 	              </div>
 	            </div>
 	            <div class="row">
 	              <div class="col-50">
-	                <label><strong>Total distance:</strong><input type="text" ng-model="hillData.distance" id="total_distance" style="width: 50%" disabled /></label>
+	                <label><strong>Total distance:</strong><input type="text" ng-model="Hill.distance" id="total_distance" style="width: 50%" disabled /></label>
 	              </div>
 	              <div class="col-50">
 	                <label><strong>Avg elevation change:</strong><input type="text" value="0" id="avg_incline" style="width: 50%" disabled /></label>
@@ -60,3 +63,74 @@
 
   </ion-content>
 </ion-view>
+
+<script id="modal.html" type="text/ng-template">
+  <ion-modal-view>
+
+    <ion-header-bar>  <!-- class="bar-royal" -->
+      <h1 class="title">Save Hill</h1>
+  		<button class="button button-clear button-royal" ng-click="closeModal()">Cancel</button>
+    </ion-header-bar>
+
+    <ion-content>
+    	<div class="list">
+
+			  <label class="item item-input item-floating-label">
+			    <span class="input-label"><strong>Name</strong></span>
+			    <input type="text" placeholder="Enter name for new hill" ng-model="Hill.name">
+			  </label>
+
+			  <label class="item item-input" style="padding-right: 16px;">
+			    <span class="input-label"><strong>Tags</strong></span>
+			    <tags-input ng-model="Hill.tags" placeholder="Add tags..."></tags-input>
+			    <!-- <input type="text" placeholderaceholder="Choose tags"> -->
+			  </label>
+				
+				<ion-toggle ng-model="Hill.panorama.auto" toggle-class="toggle-royal">Auto-discover panorama?</ion-toggle>
+    		<img class="item full-image" src="img/graph_example.png" style="border: 0;margin: 0;" ng-show="Hill.panorama.auto" />
+
+			  <label class="item item-input item-floating-label">
+			    <span class="input-label"><strong>Notes</strong></span>
+			    <input type="text" placeholder="Additional notes" ng-model="Hill.notes">
+			  </label>
+
+        <div class="item item-stable item-divider">
+          <strong>Hill stats</strong>
+        </div>
+
+        <div class="item item-icon-left royal">
+          <i class="icon ion-ios-location-outline"></i>
+          Start location
+			    <span class="item-note">
+			      <strong>{{Hill.coordinates[0][1]}}</strong>º , <strong>{{Hill.coordinates[0][0]}}</strong>º
+			    </span>
+        </div>
+
+        <div class="item item-icon-left item-text-wrap royal">
+          <i class="icon ion-ios-location-outline"></i>
+          Distance
+			    <span class="item-note">
+			      <strong>{{Hill.distance}}</strong>km
+			    </span>
+        </div>
+
+			</div>
+			<div class="padding">
+        <button class="button button-block button-balanced">Submit</button>
+        <button class="button button-block button-royal button-outline" ng-click="closeModal()">Cancel</button>
+      </div>
+			<div class="card">
+			  <div class="item item-divider">
+			    Details so far
+			  </div>
+			  <div class="item item-text-wrap">
+					<pre><code>{
+  name: "{{Hill.name}}",
+  notes: "{{Hill.notes}}",
+  <nobr>tags: </nobr>{{Hill.tags}}
+}</code></pre>
+			  </div>
+			</div>
+    </ion-content>
+  </ion-modal-view>
+</script>
