@@ -65,8 +65,7 @@ angular.module('pavment.controllers')
     },
     expression: function (filterText, value, index, array) {
       return value.name.includes(filterText) || value.distance.includes(filterText);
-    },
-    favoritesEnabled: true
+    }
   }
   $scope.showSearch = function() {
     $ionicFilterBar.show(filterConfig);

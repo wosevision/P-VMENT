@@ -20,25 +20,60 @@ angular.module('pavment.services')
   }
 ]
 */
+  this.hills = [];
+
+  // HILL OBJECT PROTOTYPE
+  function hill(data) {
+    this = {
+      name: data.name,
+      locale: data.locale,
+      tags: data.tags,
+      path: {
+        type: { type: 'LineString' },
+        coordinates: data.coordinates
+      },
+      distance: data.distance,
+      steepness: data.steepness,
+      notes: data.notes
+    }
+  };
 
   return {
+    new: function(data) {
+      newHill = new hill(data);
+      return hill;
+    },
     getAll: function() {
-      // $http.get('hilldata.json', { cache: true }).then(function(res){
-      //   hills = res;
-      // });
-      return $http.get('https://desolate-atoll-24478.herokuapp.com/hills').then(function(result) {
-        return result.data;
+      return $http.get('https://desolate-atoll-24478.herokuapp.com/hills', { cache: true }).then(function(result) {
+        this.hills = result.data;
+        return this.hills;
       });
     },
-    
-    // VVV-- NOT CURENTLY WORKING --VVV
     get: function(id) {
       return $http.get('https://desolate-atoll-24478.herokuapp.com/hills/'+id).then(function(result) {
         return result.data;
       });
     },
-    remove: function(hill) {
-      this.hills.splice(hills.indexOf(hill), 1);
+    add: function(hill) {
+      var params = $.param({
+        json: JSON.stringify({
+          name: hill.name,
+          locale: hill.locale,
+          tags: hill.tags,
+          coordinates: hill.coordinates,
+          distance: hill.distance,
+          steepness: hill.steepness,
+          notes: hill.notes
+        })
+      });
+      $http.post('https://desolate-atoll-24478.herokuapp.com/hills', params).then(function(result) {
+          return result.data;
+      });
+    },
+    remove: function(id) {
+      return $http.delete('https://desolate-atoll-24478.herokuapp.com/hills/'+id).then(function(result) {
+        return result;
+      });
     }
   };
 });
