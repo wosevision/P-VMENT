@@ -1,30 +1,43 @@
 angular.module('pavment.controllers')
 .controller('SavedDetailCtrl', function($location, $scope, $stateParams,  $cordovaSocialSharing, Hills, Panorama) {
-  
-  $scope.editorEnabled = {}; // init (all disabled)
-  $scope.editableContent = {}; // holds temporary editable versions
 
-  // $scope.Hill = Hills.get($stateParams.hillID);
-
-  // Hills.get($stateParams.hillID).success(function(res){
-  //   $scope.Hill = res;
-  // });
+  // INIT
+  // • build a blank Hill for the scope
   $scope.Hill = {};
-
+  // • use the Hills service to fetch the Hill by :hillID
   Hills.get($stateParams.hillID).then(function(response) {
     $scope.Hill = Hills.new(response.data);
-    // $scope.getPano = function(hill) {
-    //   if (hill) {
-    //     params = { 
-    //       size: '640x281',
-    //       location: hill.coordinates[0][1] + ',' + hill.coordinates[0][0],
-    //       fov: 120
-    //     };
-    //     return Panorama.get(params);
-    //   }
-    // }
   });
 
+  // VARS
+  // Objects to hold:
+  // • state of editables (is it being edited?)
+  // • temporary (live) version of content (while it is being edited)
+  $scope.editorEnabled = {}; // init (all disabled)
+  $scope.editableContent = {}; // holds temporary editable versions
+  // Functions for content editors:
+  // • accepts key of property to edit
+  // • loads property into temporary 
+  $scope.enableEditor = function(content) {
+    $scope.editorEnabled[content] = true;
+    $scope.editableContent[content] = $scope.Hill[content];
+  };
+  // • accepts key of property to save
+  // • loads value of temporary back into property and disables
+  $scope.save = function(content) {
+    $scope.Hill[content] = $scope.editableContent[content];
+    $scope.disableEditor(); 
+  };
+  // • resets states of all editables
+  $scope.disableEditor = function() {
+    $scope.editorEnabled = {};
+  };
+
+  // Share buttons: 
+  // • Twitter
+  // • Facebook
+  // • Email
+  // • Other
   $scope.share = function(hill, service) {
     message = "Check out the " + hill.distance + "km longboard cruise I mapped using the PA\u0305VMENT hill finder app!";
     subject = "Shared PA\u0305VMENT hill";
@@ -71,22 +84,7 @@ angular.module('pavment.controllers')
           // An error occured. Show a message to the user
         });
       break;
-    }
-    
+    } 
   }
-
-  $scope.enableEditor = function(content) {
-    $scope.editorEnabled[content] = true;
-    $scope.editableContent[content] = $scope.Hill[content];
-  };
-  
-  $scope.save = function(content) {
-    $scope.Hill[content] = $scope.editableContent[content];
-    $scope.disableEditor(); 
-  };
-  
-  $scope.disableEditor = function() {
-    $scope.editorEnabled = {};
-  };
 
 });

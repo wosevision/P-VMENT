@@ -1,42 +1,33 @@
 angular.module('pavment.services')
 .factory('Hills', function($http, Panorama) {
 
-// Might use a resource here that returns a JSON array
-/*
-[
-  '{{repeat(20)}}',
-  {
-    id: '{{index(0)}}',
-    guid: '{{guid()}}',
-    name: '{{street()}}',
-    locale: '{{city()}}, {{state()}}',
-    coords: {
-      lat: '{{floating(40.31304321, 41.83682786)}}',
-      lng: '{{floating(-80.81542969, -79.49707031)}}'
-    },
-    distance: '{{floating(0.1, 20, 2)}}',
-    steepness: '{{floating(-8, 8, 4)}}',
-    notes: '{{lorem(1, "paragraphs")}}'
-  }
-]
-*/
+  // JSON array generation algo
+  /*
+  [
+    '{{repeat(20)}}',
+    {
+      id: '{{index(0)}}',
+      guid: '{{guid()}}',
+      name: '{{street()}}',
+      locale: '{{city()}}, {{state()}}',
+      coords: {
+        lat: '{{floating(40.31304321, 41.83682786)}}',
+        lng: '{{floating(-80.81542969, -79.49707031)}}'
+      },
+      distance: '{{floating(0.1, 20, 2)}}',
+      steepness: '{{floating(-8, 8, 4)}}',
+      notes: '{{lorem(1, "paragraphs")}}'
+    }
+  ]
+  */
+
+  // Blank array to cache returned Hills
   var Hills = [];
 
-  // HILL OBJECT PROTOTYPE
-  // function hill(data) {
-  //   this = {
-  //     name: data.name,
-  //     locale: data.locale,
-  //     tags: data.tags,
-  //     path: {
-  //       type: { type: 'LineString' },
-  //       coordinates: data.coordinates
-  //     },
-  //     distance: data.distance,
-  //     steepness: data.steepness,
-  //     notes: data.notes
-  //   }
-  // };
+  // HILL OBJECT
+  // • accepts object literal of Hill data
+  // • sets sensible defaults if values not found
+  // • checks .coords and path.coords before defaulting
   function Hill(data) {
     this.name = data.name || '';
     this.locale = data.locale || '';
@@ -45,13 +36,13 @@ angular.module('pavment.services')
     this.distance = data.distance || 0;
     this.steepness = data.steepness || 0;
     this.notes = data.notes || 0;
-      // for (key in data) {
-      //   if (data.hasOwnProperty(key)) {
-      //     alldata += key + " -> " + data[key] + "\n";
-      //     alert(alldata);
-      //   }
-      // }
   };
+  // • reassign Hill constructor
+  // Save:
+  // • loop through data; assign to self
+  // GetPano:
+  // • build params from self coords
+  // • use Panorama service to return src
   Hill.prototype = {
     constructor: Hill,
     save: function(data) {
@@ -90,15 +81,7 @@ angular.module('pavment.services')
     },
     add: function(Hill) {
       var params = $.param({
-        json: JSON.stringify({
-          name: Hill.name,
-          locale: Hill.locale,
-          tags: Hill.tags,
-          coordinates: Hill.coordinates,
-          distance: Hill.distance,
-          steepness: Hill.steepness,
-          notes: Hill.notes
-        })
+        json: JSON.stringify(Hill)
       });
       $http.post('https://desolate-atoll-24478.herokuapp.com/hills', params).then(function(result) {
           return result.data;
@@ -110,4 +93,5 @@ angular.module('pavment.services')
       });
     }
   };
+
 });
