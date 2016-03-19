@@ -4,27 +4,26 @@ angular.module('pavment.controllers')
   $scope.editorEnabled = {}; // init (all disabled)
   $scope.editableContent = {}; // holds temporary editable versions
 
-  // $scope.hill = Hills.get($stateParams.hillID);
+  // $scope.Hill = Hills.get($stateParams.hillID);
 
   // Hills.get($stateParams.hillID).success(function(res){
-  //   $scope.hill = res;
+  //   $scope.Hill = res;
   // });
-  $scope.hill = {};
+  $scope.Hill = {};
 
   Hills.get($stateParams.hillID).then(function(response) {
-    $scope.hill = response.data;
+    $scope.Hill = Hills.new(response.data);
+    // $scope.getPano = function(hill) {
+    //   if (hill) {
+    //     params = { 
+    //       size: '640x281',
+    //       location: hill.coordinates[0][1] + ',' + hill.coordinates[0][0],
+    //       fov: 120
+    //     };
+    //     return Panorama.get(params);
+    //   }
+    // }
   });
-
-  $scope.getPano = function(hill) {
-    if (hill) {
-      params = { 
-        size: '640x281',
-        location: hill.path.coordinates[0][1] + ',' + hill.path.coordinates[0][0],
-        fov: 120
-      };
-      return Panorama.get(params);
-    }
-  }
 
   $scope.share = function(hill, service) {
     message = "Check out the " + hill.distance + "km longboard cruise I mapped using the PA\u0305VMENT hill finder app!";
@@ -78,11 +77,11 @@ angular.module('pavment.controllers')
 
   $scope.enableEditor = function(content) {
     $scope.editorEnabled[content] = true;
-    $scope.editableContent[content] = $scope.hill[content];
+    $scope.editableContent[content] = $scope.Hill[content];
   };
   
   $scope.save = function(content) {
-    $scope.hill[content] = $scope.editableContent[content];
+    $scope.Hill[content] = $scope.editableContent[content];
     $scope.disableEditor(); 
   };
   

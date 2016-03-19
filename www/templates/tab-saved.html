@@ -6,6 +6,10 @@
   </ion-nav-buttons>
 
   <ion-content>
+    <ion-refresher
+      pulling-text="Pull to refresh..."
+      on-refresh="doRefresh()">
+    </ion-refresher>
     <ion-list>
       <ion-item class="item-dark item-divider" style="background: rgba(40,40,40,0.6);">
         <span style="text-transform: uppercase;color: rgba(255,255,255,0.8);font-size: 12px;font-weight: bold;">Your saved hills</span>

@@ -1,5 +1,5 @@
 angular.module('pavment.services')
-.factory('Hills', function($http) {
+.factory('Hills', function($http, Panorama) {
 
 // Might use a resource here that returns a JSON array
 /*
@@ -20,33 +20,67 @@ angular.module('pavment.services')
   }
 ]
 */
-  this.hills = [];
+  var Hills = [];
 
   // HILL OBJECT PROTOTYPE
-  function hill(data) {
-    this = {
-      name: data.name,
-      locale: data.locale,
-      tags: data.tags,
-      path: {
-        type: { type: 'LineString' },
-        coordinates: data.coordinates
-      },
-      distance: data.distance,
-      steepness: data.steepness,
-      notes: data.notes
-    }
+  // function hill(data) {
+  //   this = {
+  //     name: data.name,
+  //     locale: data.locale,
+  //     tags: data.tags,
+  //     path: {
+  //       type: { type: 'LineString' },
+  //       coordinates: data.coordinates
+  //     },
+  //     distance: data.distance,
+  //     steepness: data.steepness,
+  //     notes: data.notes
+  //   }
+  // };
+  function Hill(data) {
+    this.name = data.name || '';
+    this.locale = data.locale || '';
+    this.tags = data.tags || [];
+    this.coordinates = data.path.coordinates || data.coordinates || [];
+    this.distance = data.distance || 0;
+    this.steepness = data.steepness || 0;
+    this.notes = data.notes || 0;
+      // for (key in data) {
+      //   if (data.hasOwnProperty(key)) {
+      //     alldata += key + " -> " + data[key] + "\n";
+      //     alert(alldata);
+      //   }
+      // }
   };
+  Hill.prototype = {
+    constructor: Hill,
+    save: function(data) {
+      for (key in data) {
+        if (data.hasOwnProperty(key)) {
+          alldata += key + " -> " + data[key] + "\n";
+          alert(alldata);
+        }
+      }
+    },
+    getPano: function() {
+      params = { 
+        size: '640x281',
+        location: this.coordinates[0][1] + ',' + this.coordinates[0][0],
+        fov: 120
+      };
+      return Panorama.get(params);
+    }
+  }
+
 
   return {
     new: function(data) {
-      newHill = new hill(data);
-      return hill;
+      return new Hill(data);
     },
     getAll: function() {
       return $http.get('https://desolate-atoll-24478.herokuapp.com/hills', { cache: true }).then(function(result) {
-        this.hills = result.data;
-        return this.hills;
+        Hills = result.data;
+        return Hills;
       });
     },
     get: function(id) {
@@ -54,16 +88,16 @@ angular.module('pavment.services')
         return result.data;
       });
     },
-    add: function(hill) {
+    add: function(Hill) {
       var params = $.param({
         json: JSON.stringify({
-          name: hill.name,
-          locale: hill.locale,
-          tags: hill.tags,
-          coordinates: hill.coordinates,
-          distance: hill.distance,
-          steepness: hill.steepness,
-          notes: hill.notes
+          name: Hill.name,
+          locale: Hill.locale,
+          tags: Hill.tags,
+          coordinates: Hill.coordinates,
+          distance: Hill.distance,
+          steepness: Hill.steepness,
+          notes: Hill.notes
         })
       });
       $http.post('https://desolate-atoll-24478.herokuapp.com/hills', params).then(function(result) {
