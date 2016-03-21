@@ -110,16 +110,16 @@ angular.module('pavment.controllers')
     $scope.modal = modal;
   });
   $scope.openModal = function() {
-    //$scope.Map.setClickable(false);
+    $scope.Map.setClickable(false);
     $scope.modal.show();
   };
   $scope.closeModal = function() {
-    //$scope.Map.setClickable(true);
+    $scope.Map.setClickable(true);
     $scope.modal.hide();
   };
   //Cleanup the modal when we're done with it!
   $scope.$on('$destroy', function() {
-    //$scope.Map.setClickable(true);
+    $scope.Map.setClickable(true);
     $scope.modal.remove();
   });
 

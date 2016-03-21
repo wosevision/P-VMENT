@@ -49,9 +49,9 @@ angular.module('pavment.services')
       for (key in data) {
         if (data.hasOwnProperty(key)) {
           alldata += key + " -> " + data[key] + "\n";
-          alert(alldata);
         }
       }
+          alert(alldata);
     },
     getPano: function() {
       params = { 

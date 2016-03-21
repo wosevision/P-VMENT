@@ -1,12 +1,12 @@
 angular.module('pavment.controllers')
 .controller('SavedCtrl', function($scope, $location, Hills, $ionicFilterBar, $ionicPopover, $cordovaSocialSharing, Panorama) {
 
-  $scope.hills = [];
+  $scope.Hills = [];
   
   $scope.doRefresh = function(){
     Hills.getAll().then(function(response) {
       // console.log(response);
-      $scope.hills = response.data;
+      $scope.Hills = response.data;
     }).finally(function() {
       // Stop the ion-refresher from spinning
       $scope.$broadcast('scroll.refreshComplete');
@@ -19,10 +19,10 @@ angular.module('pavment.controllers')
   $scope.popover = $ionicPopover.fromTemplate(template, {
     scope: $scope
   });
-  $scope.share = function(hill) {
-    message = "Check out the " + hill.distance + "km longboard cruise I mapped using the PA\u0305VMENT hill finder app!";
+  $scope.share = function(Hill) {
+    message = "Check out the " + Hill.distance + "km longboard cruise I mapped using the PA\u0305VMENT hill finder app!";
     $cordovaSocialSharing
-    .share(message, "Shared PA\u0305VMENT hill", hill.distance, $location.path() ) // Share via native share sheet
+    .share(message, "Shared PA\u0305VMENT hill", Hill.distance, $location.path() ) // Share via native share sheet
     .then(function(result) {
       // Success!
       //alert(result);
@@ -31,11 +31,11 @@ angular.module('pavment.controllers')
     });
   }
 
-  $scope.getPano = function(hill) {
-    if (hill) {
+  $scope.getPano = function(Hill) {
+    if (Hill) {
       params = { 
         size: '640x281',
-        location: hill.path.coordinates[0][1] + ',' + hill.path.coordinates[0][0],
+        location: Hill.path.coordinates[0][1] + ',' + Hill.path.coordinates[0][0],
         fov: 120
       };
       return Panorama.get(params);
@@ -61,13 +61,13 @@ angular.module('pavment.controllers')
     // Execute action
   });
   
-  $scope.remove = function(hill) {
-    Hills.remove(hill);
+  $scope.remove = function(Hill) {
+    Hills.remove(Hill);
   };
   filterConfig = {
-    items: $scope.hills,
+    items: $scope.Hills,
     update: function(matches,query) {
-      $scope.hills = matches;
+      $scope.Hills = matches;
     },
     expression: function (filterText, value, index, array) {
       return value.name.includes(filterText) || value.distance.includes(filterText);
