@@ -69,13 +69,13 @@ angular.module('pavment.services')
       return new Hill(data);
     },
     getAll: function() {
-      return $http.get('https://desolate-atoll-24478.herokuapp.com/hills', { cache: true }).then(function(result) {
+      return $http.get('https://pavment-server.herokuapp.com/hills', { cache: true }).then(function(result) {
         Hills = result.data;
         return Hills;
       });
     },
     get: function(id) {
-      return $http.get('https://desolate-atoll-24478.herokuapp.com/hills/'+id).then(function(result) {
+      return $http.get('https://pavment-server.herokuapp.com/hills/'+id).then(function(result) {
         return result.data;
       });
     },
@@ -83,12 +83,12 @@ angular.module('pavment.services')
       var params = $.param({
         json: JSON.stringify(Hill)
       });
-      $http.post('https://desolate-atoll-24478.herokuapp.com/hills', params).then(function(result) {
+      $http.post('https://pavment-server.herokuapp.com/hills', params).then(function(result) {
           return result.data;
       });
     },
     remove: function(id) {
-      return $http.delete('https://desolate-atoll-24478.herokuapp.com/hills/'+id).then(function(result) {
+      return $http.delete('https://pavment-server.herokuapp.com/hills/'+id).then(function(result) {
         return result;
       });
     }
