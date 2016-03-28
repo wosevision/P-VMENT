@@ -252,7 +252,7 @@ angular.module('pavment.controllers')
       $scope.Hill.distance = Elevation.distance(path);
       
       Elevation.path(path, function(data) {
-        Chart.sync(data, $scope.hillData.distance);
+        Chart.sync(data, $scope.Hill.distance);
       });
     }
 
